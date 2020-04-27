@@ -10,7 +10,7 @@ module.exports = {
 
 async function fastify (fastify, opts) {
   log('fastify:', opts)
-  const { environment, ...options } = opts
+  const { environment = 'local', ...options } = opts
   const connection = connect({
     ...options,
     debug: environment !== 'production'
