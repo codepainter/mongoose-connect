@@ -10,7 +10,7 @@ module.exports = {
 
 async function fastify (fastify, opts) {
   log('fastify:', opts)
-  let { environment, ...options } = opts
+  const { environment, ...options } = opts
   const connection = connect({
     ...options,
     debug: environment !== 'production'
@@ -26,7 +26,7 @@ async function fastify (fastify, opts) {
 
 function express (opts, callback) {
   log('express:', opts)
-  const NODE_ENV = getEnv('NODE_ENV', 'local')
+  const NODE_ENV = opts.environment
   const connection = connect({
     ...opts,
     debug: NODE_ENV !== 'production'
